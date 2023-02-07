@@ -1,0 +1,170 @@
+<h1 class="heading_tag">
+    {{ title }}
+</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <div class="bg-primary p-3 text-center text-white">
+                <h1>Model Driven Form ( Reactive Forms ) and Validations Concept</h1>
+            </div>
+            <form [formGroup]="signupForm" (ngSubmit)="mdfFormSubmit(signupForm)">
+                <div class="form-group">
+                    <label for="">Enter First Name: </label>
+                    <input type="text" class="form-control" formControlName="user_fname" placeholder="Enter First Name">
+                    <span
+                        class="text-danger"
+                        *ngIf="signupFormControl.user_fname.errors.required
+                        ">
+                        First name is required
+                    </span>
+                </div>
+
+                <div class="form-group">
+                    <label for="">Enter Last Name: </label>
+                    <input type="text" class="form-control" formControlName="user_lname" placeholder="Enter Last Name">
+                </div>
+                <div class="form-group">
+                    <label for="">Enter Email: </label>
+                    <input type="text" class="form-control" formControlName="user_email" placeholder="Enter Email">
+                </div>
+                <div class="form-group">
+                    <label for="">Enter Password: </label>
+                    <input type="password" class="form-control" formControlName="user_password" placeholder="Enter Password">
+                </div>
+                <div class="d-grid pt-4">
+                    <button type="submit" class="btn btn-primary btn-lg" [disabled]="!signupForm.valid">Post Data</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+</div>
+<hr>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <div class="bg-primary p-3 text-center text-white">
+                <h1>Template Driven Form and Validations Concept</h1>
+            </div>
+            <form #newForm="ngForm" (ngSubmit)="tdfFormSubmit(newForm)">
+                <div class="form-group">
+                    <label for="">Enter Name: </label>
+                    <input type="text" class="form-control" name="name" placeholder="Enter Name" required ngModel>
+                </div>
+                <div class="form-group">
+                    <label for="">Age: </label>
+                    <input type="text" class="form-control" name="age" placeholder="Enter Age" required ngModel>
+                </div>
+                <div class="form-group">
+                    <label for="">Enter Email: </label>
+                    <input type="text" class="form-control" name="email" placeholder="Enter Email" email required ngModel #email="ngModel">
+                    <span class="help-bpx" *ngIf="email.touched && !email.valid">
+                        Please enter email value
+                    </span>
+                </div>
+                <div class="form-group">
+                    <label for="">Enter Password: </label>
+                    <input type="password" class="form-control" name="password" placeholder="Enter Password" required ngModel>
+                </div>
+                <div class="d-grid pt-4">
+                    <button type="submit" class="btn btn-primary btn-lg" [disabled]="!newForm.valid">Submit</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+</div>
+<hr>
+<h2>
+    Bootstrap Installation
+</h2>
+<h4>This is my car</h4>
+<button class="btn btn-danger btn-lg">Click me</button>
+<hr>
+<h2>
+    Routing - Router Link
+</h2>
+<ul>
+    <li>
+        <a [routerLink]="['home']">Home</a>
+    </li>
+    <li>
+        <a [routerLink]="['about']">About</a>
+    </li>
+    <li>
+        <a [routerLink]="['contact']">Contact</a>
+    </li>
+</ul>
+<button (click)="serverSideRouterLink()">
+    Go To About
+</button>
+<div>
+    <router-outlet></router-outlet>
+</div>
+<hr>
+
+<h3>NgClass - Attribute Directive</h3>
+<div class="ngClassConcept">
+    <h3 [ngClass]="'one two'">Ng Class as a String With Multiple Classes</h3>
+    <h3 [ngClass]="['three', 'four']">Ng Class as an Array With Multiple Classes</h3>
+    <h3 [ngClass]="{'one':false,'two':true}">Ng Class as an Array With Multiple Classes</h3>
+    <h3 [ngClass]="getClassesFromComponent('mode')">Ng Class as a Component Object</h3>
+</div>
+
+<h3>NgStyle - Attribute Directive</h3>
+<ul *ngFor="let user of userListWithNameAndCountry">
+    <li [ngStyle]="{'color': getUserCountryColor(user.country)}" > {{ user.name }} - {{ user.country }} </li>
+</ul>
+
+<div *ngIf="userIsActive then thenBlock else elseBlock"></div>
+
+<ng-template #elseBlock>
+    <h2 style="background-color: red; padding:20px;">User is Not Active</h2>
+</ng-template>
+
+<ng-template #thenBlock>
+    <h2 style="background-color: yellow;padding: 20px;">User is Active</h2>
+</ng-template>
+
+<div [ngSwitch]="userPoints">
+    <h3 *ngSwitchCase="2">User Points are 2</h3>
+    <h3 *ngSwitchCase="4">User Points are 4</h3>
+    <h3 *ngSwitchCase="5">User Points are 5</h3>
+    <h3 *ngSwitchCase="6">User Points are 6</h3>
+    <h3 *ngSwitchDefault>User contains unknown points</h3>
+</div>
+
+
+<ul>
+    <li *ngFor="let item of userList; let i = index; let f = first; let l = last; let ev = even; let od = odd">
+        {{ i + 1 }} - {{ item.name }} - {{ f }} - {{ l }} - {{ ev }} - {{ od }}
+    </li>
+</ul>
+
+<h3>Track By Helper in NgFor <button (click)="addMoreUsers()">Add More Users</button></h3>
+<ul>
+    <li *ngFor="let item of userListTrackBy; let i = index; trackBy:trackByUserName">
+        {{ i + 1 }} - {{ item.name }}
+    </li>
+</ul>
+<h3>Grouping in NgFor</h3>
+<ul>
+    <li *ngFor="let country of countryList; let i = index; trackBy:trackByUserName">
+        {{ i + 1 }} - {{ country.name }}
+        <ul>
+            <li *ngFor="let person of country.people">{{ person }}</li>
+        </ul>
+    </li>
+</ul>
+<h3>Styling</h3>
+<ul>
+    <li *ngFor="let country of countryList; let i = index; trackBy:trackByUserName">
+        {{ i + 1 }} - {{ country.name }}
+        <ul>
+            <li *ngFor="let person of country.people">{{ person }}</li>
+        </ul>
+    </li>
+</ul>
+
