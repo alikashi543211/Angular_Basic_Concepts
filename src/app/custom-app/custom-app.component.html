@@ -8,32 +8,52 @@
             <div class="bg-primary p-3 text-center text-white">
                 <h1>Model Driven Form ( Reactive Forms ) and Validations Concept</h1>
             </div>
-            <form [formGroup]="signupForm" (ngSubmit)="mdfFormSubmit(signupForm)">
+            <!-- <form [formGroup]="signupForm" (ngSubmit)="mdfFormSubmit(signupForm)"> -->
+            <form [formGroup]="signupForm">
                 <div class="form-group">
                     <label for="">Enter First Name: </label>
                     <input type="text" class="form-control" formControlName="user_fname" placeholder="Enter First Name">
                     <span
                         class="text-danger"
-                        *ngIf="signupFormControl.user_fname.errors.required
+                        *ngIf="this.signupForm.get('user_fname')?.invalid && this.signupForm.get('user_fname')?.touched
                         ">
                         First name is required
                     </span>
                 </div>
 
-                <div class="form-group">
+                <div cl ass="form-group">
                     <label for="">Enter Last Name: </label>
                     <input type="text" class="form-control" formControlName="user_lname" placeholder="Enter Last Name">
+                    <span
+                        class="text-danger"
+                        *ngIf="this.signupForm.get('user_lname')?.invalid && this.signupForm.get('user_lname')?.touched
+                        ">
+                        Last name is required
+                    </span>
                 </div>
                 <div class="form-group">
                     <label for="">Enter Email: </label>
                     <input type="text" class="form-control" formControlName="user_email" placeholder="Enter Email">
+                    <span
+                        class="text-danger"
+                        *ngIf="this.signupForm.get('user_email')?.invalid && this.signupForm.get('user_email')?.touched
+                        ">
+                        Email is required
+                    </span>
                 </div>
                 <div class="form-group">
                     <label for="">Enter Password: </label>
                     <input type="password" class="form-control" formControlName="user_password" placeholder="Enter Password">
+                    <span
+                        class="text-danger"
+                        *ngIf="this.signupForm.get('user_password')?.invalid && this.signupForm.get('user_password')?.touched
+                        ">
+                        Password is required
+                    </span>
                 </div>
-                <div class="d-grid pt-4">
-                    <button type="submit" class="btn btn-primary btn-lg" [disabled]="!signupForm.valid">Post Data</button>
+                <div class="pt-4">
+                    <button type="button" class="btn btn-primary btn-lg" [disabled]="!signupForm.valid" (click)="postData()">Post Data</button>
+                    <button type="button" class="btn btn-danger btn-lg" (click)="resetMdfForm()">Reset Data</button>
                 </div>
             </form>
         </div>

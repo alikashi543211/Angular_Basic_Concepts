@@ -234,11 +234,20 @@ import { NgForm, FormGroup, FormControl, FormBuilder, Validators } from '@angula
 
     postData()
     {
-
+        console.log(" First Name = " + this.signupForm.get('user_fname')?.value);
+        console.log(" Last Name = " + this.signupForm.get('user_lname')?.value);
+        console.log(" Email = " + this.signupForm.get('user_email')?.value);
+        console.log(" Password = " + this.signupForm.get('user_password')?.value);
+        console.log("All Form Values");
+        console.log(this.signupForm.value);
     }
 
     resetMdfForm()
     {
-        this.signupForm.reset();
+        this.signupForm.reset({
+            user_fname:"Default",
+            user_lname:"User",
+        });
     }
+
 }
