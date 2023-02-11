@@ -4,36 +4,50 @@
         <h5 class="alert alert-success">Form Array Component Add Dynamic Rows ( Multiple Form Controls ) Concept </h5>
     </div>
     <div class="row">
-        <div class="col-md-3"></div>
-        <div class="col-md-6">
-            <form [formGroup]="form" (ngSubmit)="nestedFormArraySubmitConcept(form)" novalidate>
-                <div class="row" formArrayName="work_order_numbers">
-                    <div class="col-md-12 my-2" *ngFor="let work_order_number of form.controls.work_order_numbers.controls; index as i">
-                        <div class="d-flex">
-                            <div class="form-group">
-                                <input class="form-control" [formControlName]="i" placeholder="Work Order Number">
-                            </div>
-                            <div *ngIf="i != 0">
-                                <button type="button" class="btn btn-danger mx-1" (click)="removeNestedFormControlMethodConcept(i)">
-                                    Remove
-                                </button>
-                            </div>
+        <form [formGroup]="formGroupForDynamicRow" (ngSubmit)="nestedFormArrayMultipleRowsSubmitConcept()" novalidate>
+        <div class="col-md-12" formGroupName="productRows">
+            <ng-container *ngIf="formGroupForDynamicRow.controls.productRows != null">
+                <div class="row my-2" *ngFor="let productRow of formGroupForDynamicRow.controls.productRows.controls; let i=index;" [formGroupName]="i">
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <input class="form-control" placeholder="ID" formControlName="id">
                         </div>
                     </div>
-                    <div class="col-md-12 my-3">
-                        <button type="button" class="btn btn-primary mx-1" (click)="addNestedFormControlMethodConcept()">
-                            Add More
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <input class="form-control" placeholder="Name" formControlName="name">
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <input class="form-control" placeholder="Quantity" formControlName="quantity">
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <input class="form-control" placeholder="Value" formControlName="value">
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <button type="button" class="btn btn-danger mx-1" (click)="deleteProductRow(i)">
+                            Remove
                         </button>
-                        <button type="button" class="btn btn-info mx-1" (click)="setPresetValue()">
-                            Patch Value
-                        </button>
-
-                        <button type="submit" class="btn btn-success mx-1" [disabled]="!form.valid">Submit</button>
                     </div>
                 </div>
-            </form>
+            </ng-container>
         </div>
-        <div class="col-md-3"></div>
+        <div class="col-md-12 my-3">
+            <button type="button" class="btn btn-primary mx-1" (click)="addMultipleFormControlRowMethodConcept()">
+                Add More
+            </button>
+            <button type="button" class="btn btn-info mx-1" (click)="setPresetValueInRow()">
+                Patch Value
+            </button>
+
+            <button type="submit" class="btn btn-success mx-1" [disabled]="!formGroupForDynamicRow.valid">Submit</button>
+        </div>
+
+        </form>
     </div>
     <div>
         <h5 class="alert alert-success">Form Array Component Add More ( Single FormControl ) Concept </h5>

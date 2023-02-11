@@ -11,6 +11,7 @@ export class FormArrayConceptComponent implements OnInit {
     // formGroup:FormGroup;
     form:any;
     formGroupForDynamicRow:any;
+    totalRow:number = 0;
     constructor(private _fb:FormBuilder) {}
     ngOnInit(): void {
         this.formArrayMethodConcept();
@@ -23,19 +24,20 @@ export class FormArrayConceptComponent implements OnInit {
 
         // Dynamically Rows Add and Remove
         this.formGroupForDynamicRow = this._fb.group({
-            products: this._fb.array([this.initProductRow()]),
+            productRows: this._fb.array([this.initProductRow()]),
         })
     }
 
     initProductRow()
     {
-        this._fb.group({
-            id:null,
-            name:null,
-            quantity:null,
-            value:null,
+        return this._fb.group({
+            id:['', [Validators.compose([Validators.required])]],
+            name:['', [Validators.compose([Validators.required, Validators.minLength(2)])]],
+            quantity:['', [Validators.compose([Validators.required])]],
+            value:['', [Validators.compose([Validators.required])]],
         })
     }
+
 
     formArrayMethodConcept()
     {
@@ -68,4 +70,52 @@ export class FormArrayConceptComponent implements OnInit {
         this.form.get("work_order_numbers").patchValue(["W90","W91"]);
     }
 
+    setPresetValueInRow()
+    {
+        var productRows = <FormArray>this.formGroupForDynamicRow.controls['productRows'];
+        productRows.patchValue([
+            {
+                id:12,
+                name:"Door",
+                quantity:30,
+                value:470,
+            },
+            {
+                id:13,
+                name:"Frame",
+                quantity:40,
+                value:500,
+            },
+        ])
+    }
+
+    nestedFormArrayMultipleRowsSubmitConcept()
+    {
+        var productRows = <FormArray>this.formGroupForDynamicRow.controls['productRows'];
+        console.log(this.formGroupForDynamicRow.value);
+        console.log(productRows.value);
+    }
+
+    addMultipleFormControlRowMethodConcept()
+    {
+        const control = <FormArray>this.formGroupForDynamicRow.controls['productRows'];
+        control.push(this.initProductRow());
+    }
+
+    deleteProductRow(i:any):boolean
+    {
+        const control = <FormArray>this.formGroupForDynamicRow.controls['productRows'];
+        if(control != null)
+        {
+            this.totalRow = control.value.length;
+        }
+        if(this.totalRow > 1)
+        {
+            control.removeAt(i);
+        }else{
+            alert("One Record is Mandatory.");
+            return false;
+        }
+        return true;
+    }
 }
