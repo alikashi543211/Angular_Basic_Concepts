@@ -205,10 +205,10 @@ import { NgForm, FormGroup, FormControl, FormBuilder, Validators } from '@angula
     }
 
 
-    @HostListener('click', ['$event'])
-    onhostclick(event:Event){
-        console.log("User clicked");
-    }
+    // @HostListener('click', ['$event'])
+    // onhostclick(event:Event){
+    //     console.log("User clicked");
+    // }
 
     serverSideRouterLink()
     {

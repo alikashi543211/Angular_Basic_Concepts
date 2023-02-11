@@ -17,6 +17,7 @@ import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { TdfComponent } from './tdf/tdf.component';
+import { FormArrayConceptComponent } from './form-array-concept/form-array-concept.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { TdfComponent } from './tdf/tdf.component';
     AboutComponent,
     PageNotFoundComponent,
     TdfComponent,
+    FormArrayConceptComponent,
   ],
   imports: [
     BrowserModule,
