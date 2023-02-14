@@ -54,6 +54,8 @@
                 <div class="pt-4">
                     <button type="button" class="btn btn-primary btn-lg" [disabled]="!signupForm.valid" (click)="postData()">Post Data</button>
                     <button type="button" class="btn btn-danger btn-lg" (click)="resetMdfForm()">Reset Data</button>
+                    <button type="button" class="btn btn-warning btn-lg" (click)="setValueFromApiToFormToFillAllFields()">Set Data</button>
+                    <button type="button" class="btn btn-success btn-lg" (click)="patchValueFromApiToFormToFillMendatoryFields()">Patch Data</button>
                 </div>
             </form>
         </div>
