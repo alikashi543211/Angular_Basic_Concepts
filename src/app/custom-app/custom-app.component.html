@@ -1,6 +1,27 @@
 <h1 class="heading_tag">
     {{ title }}
 </h1>
+<di
+<hr>
+<h4 class="tex-primary">
+    <ol>
+        <li>
+            <a routerLink="form-array-concept">FormArray Concept</a>
+        </li>
+        <li>
+            <a routerLink="radio-checkbox-concept">Radio and Checkbox Concept</a>
+        </li>
+        <li>
+            <a routerLink="angular-material-concept">Angular Material Concept</a>
+        </li>
+    </ol>
+</h4>
+<br>
+<hr>
+    <h3>Area Of Dynamic Component</h3>
+    <router-outlet></router-outlet>
+<hr>
+<br>
 <div class="container">
     <div class="row">
         <div class="col-md-4"></div>
@@ -123,13 +144,8 @@
     Go To About
 </button>
 <div>
-    <router-outlet></router-outlet>
-</div>
-<hr>
-
-<h3>NgClass - Attribute Directive</h3>
-<div class="ngClassConcept">
-    <h3 [ngClass]="'one two'">Ng Class as a String With Multiple Classes</h3>
+    <!-- <router-outlet></router-outlet> -->
+tring With Multiple Classes</h3>
     <h3 [ngClass]="['three', 'four']">Ng Class as an Array With Multiple Classes</h3>
     <h3 [ngClass]="{'one':false,'two':true}">Ng Class as an Array With Multiple Classes</h3>
     <h3 [ngClass]="getClassesFromComponent('mode')">Ng Class as a Component Object</h3>

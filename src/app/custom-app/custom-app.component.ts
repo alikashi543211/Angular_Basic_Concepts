@@ -210,10 +210,10 @@ import { NgForm, FormGroup, FormControl, FormBuilder, Validators, FormArray } fr
         }
 
 
-        @HostListener('click', ['$event'])
-        onhostclick(event:Event){
-            console.log("User clicked");
-        }
+    // @HostListener('click', ['$event'])
+    // onhostclick(event:Event){
+    //     console.log("User clicked");
+    // }
 
         serverSideRouterLink()
         {
