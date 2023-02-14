@@ -1,0 +1,44 @@
+<h4>Radio and Checkbox Form Concept</h4>
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <form #radioCheckBoxForm="ngForm">
+            <div class="form-group mb-2">
+                <input type="text" class="form-control" name="name" placeholder="Name" required #name="ngModel" [ngModel]="user.name">
+                <span *ngIf="name.invalid && name.touched" class="text-danger">
+                    Name field is required
+                </span>
+            </div>
+            <div class="form-group mb-2">
+                <input type="radio" name="gender" value="Male" required #gender="ngModel" [ngModel]="user.gender">
+                Male <br>
+                <input type="radio" name="gender" value="Female" required #gender="ngModel" [ngModel]="user.gender">
+                Female <br>
+                <input type="radio" name="gender" value="Other" required #gender="ngModel" [ngModel]="user.gender">
+                Other
+
+                <span *ngIf="gender.invalid && gender.touched" class="text-danger">
+                    Gender field is required
+                </span>
+            </div>
+            <div class="form-group mb-2">
+                <label for="">Are You Married ?&nbsp;&nbsp;&nbsp;</label>
+                <input type="checkbox" name="married" [ngModel]="user.married">
+            </div>
+            <div class="form-group mb-2">
+                <label for="">Accept T & C : &nbsp;&nbsp;&nbsp;</label>
+                <input type="checkbox" name="tc" [ngModel]="user.isTCAccepted" readonly #tc="ngModel">
+                <span *ngIf="tc.invalid && tc.touched" class="text-danger">
+                    T & C field is required
+                </span>
+            </div>
+            <div class="form-group mb-2">
+                <button class="btn btn-info" (click)="setDefaultValues()">Set Default</button>&nbsp;
+                <button class="btn btn-success" (click)="submitRadioCheckboxForm(radioCheckBoxForm)">Submit</button>&nbsp;
+                <button class="btn btn-danger" (click)="resetForm(radioCheckBoxForm)">Reset</button>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-4"></div>
+</div>
+

@@ -1,3 +1,4 @@
+import { MaterialExampleModule } from './material-example-module/material-example-module.module';
 import { DecoratorConceptServiceService } from './services/decorator-concept-service.service';
 import { TestService } from './test.service';
 import { CustomerModule } from './customer/customer.module';
@@ -18,6 +19,10 @@ import { AboutComponent } from './about/about.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { TdfComponent } from './tdf/tdf.component';
 import { FormArrayConceptComponent } from './form-array-concept/form-array-concept.component';
+import { RadioChecBoxComponent } from './radio-chec-box/radio-chec-box.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule } from "@angular/material/button";
+import { AngularMaterialConceptComponent } from './angular-material-concept/angular-material-concept.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +35,8 @@ import { FormArrayConceptComponent } from './form-array-concept/form-array-conce
     PageNotFoundComponent,
     TdfComponent,
     FormArrayConceptComponent,
+    RadioChecBoxComponent,
+    AngularMaterialConceptComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,7 +46,10 @@ import { FormArrayConceptComponent } from './form-array-concept/form-array-conce
     EmployeeModule,
     CustomerModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MaterialExampleModule
   ],
   providers: [
     TestService,
