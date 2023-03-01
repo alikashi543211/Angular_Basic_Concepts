@@ -8,7 +8,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-    {path:'', redirectTo:'home', pathMatch:"full"},
+    {path:'', redirectTo:'company', pathMatch:"full"},
     {path:'form-array-concept', component:FormArrayConceptComponent},
     {path:'radio-checkbox-concept', component:RadioChecBoxComponent},
     {path:'radio-checkbox-concept', component:RadioChecBoxComponent},

@@ -1,7 +1,7 @@
 <h1 class="heading_tag">
     {{ title }}
 </h1>
-<di
+<div></div>
 <hr>
 <h4 class="tex-primary">
     <ol>
@@ -13,6 +13,9 @@
         </li>
         <li>
             <a routerLink="angular-material-concept">Angular Material Concept</a>
+        </li>
+        <li>
+            <a routerLink="company">Company</a>
         </li>
     </ol>
 </h4>
@@ -139,13 +142,16 @@
     <li>
         <a [routerLink]="['contact']">Contact</a>
     </li>
+    <li>
+        <a [routerLink]="['company']">Company</a>
+    </li>
 </ul>
 <button (click)="serverSideRouterLink()">
     Go To About
 </button>
 <div>
     <!-- <router-outlet></router-outlet> -->
-tring With Multiple Classes</h3>
+<h3>String With Multiple Classes</h3>
     <h3 [ngClass]="['three', 'four']">Ng Class as an Array With Multiple Classes</h3>
     <h3 [ngClass]="{'one':false,'two':true}">Ng Class as an Array With Multiple Classes</h3>
     <h3 [ngClass]="getClassesFromComponent('mode')">Ng Class as a Component Object</h3>
