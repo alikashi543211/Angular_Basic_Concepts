@@ -25,7 +25,6 @@ import { RadioChecBoxComponent } from './radio-chec-box/radio-chec-box.component
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from "@angular/material/button";
 import { AngularMaterialConceptComponent } from './angular-material-concept/angular-material-concept.component';
-import { PersonListComponent } from './person-list/person-list.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +39,6 @@ import { PersonListComponent } from './person-list/person-list.component';
     FormArrayConceptComponent,
     RadioChecBoxComponent,
     AngularMaterialConceptComponent,
-    PersonListComponent,
   ],
   imports: [
     BrowserModule,
