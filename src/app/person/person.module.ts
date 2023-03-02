@@ -16,4 +16,9 @@ import { PersonListComponent } from './person-list/person-list.component';
     PersonRoutingModule
   ]
 })
-export class PersonModule { }
+export class PersonModule {
+    constructor()
+    {
+        console.log("This is Person Module");
+    }
+}

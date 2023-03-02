@@ -5,7 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
     {
-        path:'person',
+        path:'',
         component: PersonComponent,
         children: [
             {
@@ -17,7 +17,12 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class PersonRoutingModule { }
+export class PersonRoutingModule {
+    constructor()
+    {
+        console.log("This is Person Routing Module");
+    }
+}

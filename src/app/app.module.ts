@@ -1,5 +1,5 @@
-import { PersonModule } from './person/person.module';
-import { CompanyModule } from './company/company.module';
+// import { PersonModule } from './person/person.module';
+// import { CompanyModule } from './company/company.module';
 import { MaterialExampleModule } from './material-example-module/material-example-module.module';
 import { DecoratorConceptServiceService } from './services/decorator-concept-service.service';
 import { TestService } from './test.service';
@@ -51,8 +51,8 @@ import { AngularMaterialConceptComponent } from './angular-material-concept/angu
     BrowserAnimationsModule,
     MatButtonModule,
     MaterialExampleModule,
-    CompanyModule,
-    PersonModule,
+    // CompanyModule,
+    // PersonModule,
     AppRoutingModule,
   ],
   providers: [

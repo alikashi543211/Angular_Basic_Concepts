@@ -9,7 +9,19 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
     {path:'', redirectTo:'company', pathMatch:"full"},
-    {path:'form-array-concept', component:FormArrayConceptComponent},
+    {path : 'form-array-concept', component:FormArrayConceptComponent},
+    {
+        path : 'company',
+        loadChildren : () => import('./company/company.module').then(
+            module => module.CompanyModule
+        )
+    },
+    {
+        path: 'person',
+        loadChildren : () => import('./person/person.module').then(
+            module => module.PersonModule
+        )
+    },
     {path:'radio-checkbox-concept', component:RadioChecBoxComponent},
     {path:'radio-checkbox-concept', component:RadioChecBoxComponent},
     {path:'angular-material-concept', component:AngularMaterialConceptComponent},
