@@ -1,3 +1,4 @@
+import { AddressModule } from './address/address.module';
 import { AngularMaterialConceptComponent } from './angular-material-concept/angular-material-concept.component';
 import { RadioChecBoxComponent } from './radio-chec-box/radio-chec-box.component';
 import { FormArrayConceptComponent } from './form-array-concept/form-array-concept.component';
@@ -5,7 +6,7 @@ import { FormArrayConceptComponent } from './form-array-concept/form-array-conce
 import { AboutComponent } from './about/about.component';
 import { HomeComponent } from './home/home.component';
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
     {path:'', redirectTo:'company', pathMatch:"full"},
@@ -14,12 +15,20 @@ const routes: Routes = [
         path : 'company',
         loadChildren : () => import('./company/company.module').then(
             module => module.CompanyModule
-        )
+        ),
+        data : { preload: true }
     },
     {
         path: 'person',
         loadChildren : () => import('./person/person.module').then(
             module => module.PersonModule
+        ),
+        data : { preload: true }
+    },
+    {
+        path: 'address',
+        loadChildren : () => import('./address/address.module').then(
+            module => module.AddressModule
         )
     },
     {path:'radio-checkbox-concept', component:RadioChecBoxComponent},
@@ -32,7 +41,10 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {
+    preloadingStrategy:PreloadAllModules
+  })
+],
   exports: [RouterModule]
 })
 export class AppRoutingModule {
